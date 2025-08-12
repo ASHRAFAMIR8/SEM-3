@@ -1,0 +1,54 @@
+1. Write a C program to store and display information about a list of courses, where each course has a subject name and corresponding marks. 
+The number of courses should be taken as input from the user. Dynamically allocate memory for storing the records using malloc. 
+Accept subject name and marks for each record from the user.
+Display the stored information.
+Finally, release the allocated memory using free.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Define structure for course
+struct Course {
+    char subject[100];
+    float marks;
+};
+
+int main() {
+    int n;
+    struct Course *courses;
+
+    // Take number of courses from user
+    printf("Enter the number of courses: ");
+    scanf("%d", &n);
+
+    // Allocate memory dynamically
+    courses = (struct Course *)malloc(n * sizeof(struct Course));
+
+    if (courses == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    // Input course information
+    for (int i = 0; i < n; i++) {
+        printf("Enter subject name for course %d: ", i + 1);
+        scanf(" %[^\n]", courses[i].subject); // Reads string with spaces
+
+        printf("Enter marks for %s: ", courses[i].subject);
+        scanf("%f", &courses[i].marks);
+    }
+
+    // Display the stored information
+    printf("\n--- Course Information ---\n");
+    for (int i = 0; i < n; i++) {
+        printf("Course %d:\n", i + 1);
+        printf("  Subject: %s\n", courses[i].subject);
+        printf("  Marks: %.2f\n", courses[i].marks);
+    }
+
+    // Free the allocated memory
+    free(courses);
+
+    return 0;
+}

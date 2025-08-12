@@ -1,0 +1,39 @@
+ Write a program where a function updates the salary of an employee using a pointer to structure.
+
+ #include <stdio.h>
+
+// Define the structure for an employee
+struct Employee {
+    char name[100];
+    float salary;
+};
+
+// Function to update salary using pointer to structure
+void updateSalary(struct Employee *emp, float increment) {
+    emp->salary += increment;  // Increase salary by increment
+}
+
+int main() {
+    struct Employee emp;
+
+    // Input employee details
+    printf("Enter employee name: ");
+    scanf(" %[^\n]", emp.name);
+
+    printf("Enter current salary: ");
+    scanf("%f", &emp.salary);
+
+    float increment;
+    printf("Enter salary increment: ");
+    scanf("%f", &increment);
+
+    // Update salary using pointer
+    updateSalary(&emp, increment);
+
+    // Display updated details
+    printf("\nUpdated Employee Details:\n");
+    printf("Name: %s\n", emp.name);
+    printf("Salary: %.2f\n", emp.salary);
+
+    return 0;
+}

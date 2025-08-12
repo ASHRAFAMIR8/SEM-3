@@ -1,0 +1,37 @@
+Create struct Op { const char *name; int (*fn)(int,int); }. Build an array of operations (add, sub, mul, max) and call them 
+via pointers. Print results.
+
+#include <stdio.h>
+
+// Define struct Op with a function pointer
+struct Op {
+    const char *name;
+    int (*fn)(int, int);
+};
+
+// Define the functions for the operations
+int add(int a, int b) { return a + b; }
+int sub(int a, int b) { return a - b; }
+int mul(int a, int b) { return a * b; }
+int max(int a, int b) { return (a > b) ? a : b; }
+
+int main() {
+    // Create an array of operations
+    struct Op operations[] = {
+        {"add", add},
+        {"sub", sub},
+        {"mul", mul},
+        {"max", max}
+    };
+
+    int x = 10, y = 5;
+    int n = sizeof(operations) / sizeof(operations[0]);
+
+    // Call each operation via pointers and print results
+    for (int i = 0; i < n; i++) {
+        int result = operations[i].fn(x, y);
+        printf("%s(%d, %d) = %d\n", operations[i].name, x, y, result);
+    }
+
+    return 0;
+}

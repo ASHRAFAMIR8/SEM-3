@@ -1,0 +1,38 @@
+ Write a program to store details of 3 books using an array of structures and a pointer.
+
+ #include <stdio.h>
+
+// Define the structure for a book
+struct Book {
+    char title[100];
+    char author[100];
+    int year;
+};
+
+int main() {
+    struct Book books[3];   // Array of 3 books
+    struct Book *ptr = books;  // Pointer to the array
+
+    // Input details for each book
+    for (int i = 0; i < 3; i++) {
+        printf("Enter title of book %d: ", i + 1);
+        scanf(" %[^\n]", ptr[i].title);
+
+        printf("Enter author of book %d: ", i + 1);
+        scanf(" %[^\n]", ptr[i].author);
+
+        printf("Enter year of publication for book %d: ", i + 1);
+        scanf("%d", &ptr[i].year);
+    }
+
+    // Display the details
+    printf("\n--- Book Details ---\n");
+    for (int i = 0; i < 3; i++) {
+        printf("Book %d:\n", i + 1);
+        printf("  Title: %s\n", ptr[i].title);
+        printf("  Author: %s\n", ptr[i].author);
+        printf("  Year: %d\n", ptr[i].year);
+    }
+
+    return 0;
+}
