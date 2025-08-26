@@ -33,5 +33,5 @@ int main() {
 /* OUTPUT
 Enter the three numbers :
 1 8 5
-Maximum number : 8
+Maximum number : 8 
 */
